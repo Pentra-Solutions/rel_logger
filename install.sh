@@ -29,7 +29,7 @@ else
 fi
 
 # Download the latest release
-DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_RELEASE/${APP_NAME}_${OS}_${ARCH}.tar.gz"
+DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_RELEASE/${APP_NAME}_${OS}_${ARCH}.zip"
 echo "Downloading $APP_NAME from $DOWNLOAD_URL ..."
 curl -L "$DOWNLOAD_URL" -o "$APP_NAME.zip"
 
