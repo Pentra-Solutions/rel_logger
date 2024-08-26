@@ -36,6 +36,7 @@ curl -L "$DOWNLOAD_URL" -o "$APP_NAME.zip"
 # Extract the binary
 echo "Extracting $APP_NAME ..."
 unzip "$APP_NAME.zip"
+mv "${APP_NAME}_${OS}_${ARCH}" "$APP_NAME"
 chmod +x "$APP_NAME"
 
 # Move the binary to the installation directory
