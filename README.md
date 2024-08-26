@@ -5,5 +5,5 @@ The pentra logger is used in order to intercept all terminal based command and s
 ## Installation
 
 ```bash
-curl -sL https://example.com/install.sh | bash
+curl -sL https://raw.githubusercontent.com/Pentra-Solutions/rel_logger/main/install.sh | bash
 ```
