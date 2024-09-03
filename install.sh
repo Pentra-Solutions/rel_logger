@@ -10,10 +10,16 @@ BIN_DIR="/usr/local/bin"
 OS=$(uname -s)
 ARCH=$(uname -m)
 
+# Colors
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 if [ "$OS" = "Linux" ]; then
     OS="linux"
 else
-    echo "Unsupported OS: $OS"
+    echo -e "${RED}Unsupported OS: $OS${NC}"
     exit 1
 fi
 
@@ -24,28 +30,28 @@ elif [ "$ARCH" = "arm64" ]; then
 elif [ "$ARCH" = "386" ]; then
     ARCH="386"
 else
-    echo "Unsupported architecture: $ARCH"
+    echo -e "${RED}Unsupported architecture: $ARCH${NC}"
     exit 1
 fi
 
 # Download the latest release
 DOWNLOAD_URL="https://github.com/$REPO/releases/download/$LATEST_RELEASE/${APP_NAME}_${OS}_${ARCH}.zip"
-echo "Downloading $APP_NAME from $DOWNLOAD_URL ..."
+echo -e "${YELLOW}Downloading $APP_NAME from $DOWNLOAD_URL ...${NC}"
 curl -L "$DOWNLOAD_URL" -o "$APP_NAME.zip"
 
 # Extract the binary
-echo "Extracting $APP_NAME ..."
+echo -e "${YELLOW}Extracting $APP_NAME ...${NC}"
 unzip "$APP_NAME.zip"
 mv "${APP_NAME}_${OS}_${ARCH}" "$APP_NAME"
 chmod +x "$APP_NAME"
 
 # Move the binary to the installation directory
-echo "Installing $APP_NAME to $BIN_DIR ..."
+echo -e "${YELLOW}Installing $APP_NAME to $BIN_DIR ...${NC}"
 sudo mv "$APP_NAME" "$BIN_DIR/$APP_NAME"
 
 # Clean up
-echo "Cleaning up ..."
+echo -e "${YELLOW}Cleaning up ...${NC}"
 rm "$APP_NAME.zip"
 
-echo "$APP_NAME installation complete!"
-echo "Run '$APP_NAME' to get started."
+echo -e "${GREEN}$APP_NAME installation complete!${NC}"
+echo -e "${GREEN}Run '$APP_NAME' to get started.${NC}"
