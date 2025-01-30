@@ -25,7 +25,7 @@ fi
 
 if [ "$ARCH" = "x86_64" ]; then
     ARCH="amd64"
-elif [ "$ARCH" = "arm64" ]; then
+elif [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
     ARCH="arm64"
 elif [ "$ARCH" = "386" ]; then
     ARCH="386"
